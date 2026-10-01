@@ -1,5 +1,7 @@
 # Machine Learning Projects
 
+[![Python tests](https://github.com/parkboquan/MachineLearning/actions/workflows/python-tests.yml/badge.svg)](https://github.com/parkboquan/MachineLearning/actions/workflows/python-tests.yml)
+
 Repository tổng hợp các bài thực hành Machine Learning:
 
 | Thư mục | Nội dung | Thuật toán chính |

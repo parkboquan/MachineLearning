@@ -1,0 +1,38 @@
+name: Python tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Test Gradient Descent minimum exercises
+        working-directory: gradient_descent_minimum
+        run: python -m unittest -v
+
+      - name: Test Gradient Descent and Perceptron exercises
+        working-directory: gradient_descent_perceptron
+        run: python -m unittest discover -s tests -v
